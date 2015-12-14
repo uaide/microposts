@@ -2,3 +2,8 @@
     <%= gravatar_for @user %>
     <%= @user.name %>
 </h1>
+<% if logged_in? %>
+    <div align=center>
+        <%= link_to "Update Profile" , edit_user_path(@user)%>
+    </div>
+<% end %>
