@@ -23,7 +23,6 @@ class UsersController < ApplicationController
     else
       flash[:warning] = "no access!"
       redirect_to root_path
-      
     end
   end
   

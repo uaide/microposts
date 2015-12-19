@@ -15,7 +15,7 @@
             </div>
             <label for="user_email" class ="col-sm-2 control-label">メール：</label>
             <div class="col-sm-5">
-                 <%= f.text_field :email,class: "form-control",id:"user_email" %>    
+                 <%= f.email_field :email,class: "form-control",id:"user_email" %>    
             </div>
             <div class="col-sm-4">
             </div>
@@ -45,7 +45,7 @@
         </div>
         <label for="user_password" class ="col-sm-2 control-label">パスワード：</label>
         <div class="col-sm-5">
-            <%= f.text_field :password,class:"form-control",id:"user_password" %>
+            <%= f.password_field :password,class:"form-control",id:"user_password" %>
         </div>
         <div class="col-sm-4">
         </div>
