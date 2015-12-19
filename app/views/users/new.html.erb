@@ -1,25 +1,26 @@
 <h1>Sign up</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %> 
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+         <%= form_for(@user, html:{class: "form-horizontal"})  do |f| %>
         
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-            
-            <%= f.label :email %>
-            <%= f.text_field :email%>
-            
-            <%= f.label :password %>
-            <%= f.password_field :password %>
-            
-            <%= f.label :passowrd_confirmation, "Confirmaition" %>
-            <%= f.password_field :passowrd_confirmation %>
-            
-            <%= f.submit "Create my account", class: "btn-large btn-primary" %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
         
-        <% end %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
         
-    </div>    
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+        
+        <%= f.label :passowrd_confirmation %>
+        <%= f.password_field :passowrd_confirmation, class: 'form-control' %>
+        
+        <%= f.submit "Create my account", class: "btn btn-primary btn-large" %>
+    <% end %>
+    
+
+    </div>
+  
 </div>
