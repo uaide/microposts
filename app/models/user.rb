@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
                       format: { with: VALID_EMAIL_REGEX},
                       uniqueness: {case_sensitive:false}
     has_secure_password
-    validates :password, presence: true
-    validates :password_confirmation, presence: true
+    validates :password, presence: true, if: ":password_confirmation.nil?"
+    validates :password_confirmation, presence: true, if: ":password.nil?"
     validates :greet, presence: false, length:{maximum: 100}
     validates :area, presence: false , length:{maximum: 10}
+    
 end

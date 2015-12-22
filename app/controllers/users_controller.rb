@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :show]
   
+  
   def show
   end
   
@@ -19,14 +20,11 @@ class UsersController < ApplicationController
   end
   
   def edit
-    if logged_in? && @user == current_user
-    else
-      flash[:warning] = "no access!"
-      redirect_to root_path
-    end
+    chk_user
   end
   
   def update
+    chk_user
     if @user.update(user_params)
       flash[:info] = "プロフィールを編集しました"
       redirect_to user_path   
@@ -45,6 +43,15 @@ class UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
+  end
+  
+  def chk_user
+    @user = User.find(params[:id])
+    if logged_in? && @user == current_user
+    else
+      flash[:warning] = "no access!"
+      redirect_to root_path
+    end  
   end
   
 end
