@@ -5,7 +5,40 @@
                 <%= gravatar_for @user %>
                 
                 <%= @user.name %>
-                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5">
+                        </div>
+                        <div class ="col-sm-1">名前：</div>
+                        <div class="col-sm-6">
+                            <%= @user.name %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        </div>
+                        <div class ="col-sm-1">メール：</div>
+                        <div class ="col-sm-6">
+                             <%= @user.email %>    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        </div>
+                        <div class="col-sm-1">地域：</div>
+                        <div class="col-sm-6">
+                            <%= @user.area %>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-5">
+                    </div>
+                    <div class ="col-sm-1">あいさつ：</div>
+                        <div class="col-sm-6">
+                                <%= @user.greet %>
+                        </div>
+                    </div>
+                    </div>
             </h1>
         </section>
     </aside>

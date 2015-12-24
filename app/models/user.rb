@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
                       format: { with: VALID_EMAIL_REGEX},
                       uniqueness: {case_sensitive:false}
     has_secure_password
+<<<<<<< HEAD
     
     has_many :microposts
     
@@ -39,3 +40,11 @@ class User < ActiveRecord::Base
     
     
 end
+=======
+    validates :password, presence: false
+    validates :password_confirmation, presence: false
+    validates :greet, presence: false, length:{maximum: 100}
+    validates :area, presence: false , length:{maximum: 10}
+    
+end
+>>>>>>> user-profile

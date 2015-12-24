@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:update, :edit, :show]
+  
+  
   def show
+<<<<<<< HEAD
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
+=======
+>>>>>>> user-profile
   end
   
   def new
@@ -18,11 +24,39 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    chk_user
+  end
+  
+  def update
+    chk_user
+    if @user.update(user_params)
+      flash[:info] = "プロフィールを編集しました"
+      redirect_to user_path   
+    else
+      render 'edit'
+    end
+  end
+
+    
   private
   
   def user_params
-    params.require(:user).permit(:name,:email,:password,
-    :password_confirmation)
+    params.require(:user).permit(:name,:email,:password,:password_confirmation,
+    :area,:greet)
+  end
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
+  def chk_user
+    @user = User.find(params[:id])
+    if logged_in? && @user == current_user
+    else
+      flash[:warning] = "no access!"
+      redirect_to root_path
+    end  
   end
   
 end
