@@ -12,10 +12,24 @@
                 <%= @user.greet %>
             </h1>
         </section>
-        <section class="follow_list">
-            <h3><%= link_to "Follow", followings_user_path %></h3>
-            <h3><%= link_to "Follower",followers_user_path %></h3>
+        <section class="nov follow_list">
+            フォロー
+            <ol>
+                <% @following_users.each do |following_users| %>
+                <h4>
+                    <%= link_to gravatar_for(following_users, size:25), following_users %>
+                    <%= following_users.name %>
+                </h4>
+                <div>
+                    <%= following_users.greet %>
+                    </br>
+                    <%= following_users.area %>
+                    </br>
+                </div>
+                <% end %>
+            </ol>
         </section>
+        <h3><%= link_to "Follower",followers_user_path %></h3>
     </aside>
     <div class="col-md-8">
     
@@ -30,3 +44,5 @@
         <% end %>
     </div>
 </div>
+
+    

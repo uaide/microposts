@@ -34,6 +34,18 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+  def followings
+    chk_user
+    @following_users = @user.following_users(@user.id)
+    @microposts = @user.microposts.order(created_at: :desc)
+  end
+  
+  def followers
+    chk_user
+    @follower_users = @user.follower_users(@user.id)
+    @microposts = @user.microposts.order(created_at: :desc)
+  end
 
     
   private
