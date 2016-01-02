@@ -1,5 +1,22 @@
 <% if @feed_items.any? %>
-    <ol class="microposts">
-        <%= render @feed_items %>
-    </ol>
+<%#    <ol class="microposts"> %>
+<%#        <%= render @feed_items %>
+<%#    </ol> %>
+     <% @feed_items.each do |feed_item| %>
+         <% if feed_item.retweetid != nil %>
+           <% @retweets = Micropost.where(id: feed_item.retweetid) %>
+           <% @retweets.each do |retweet| %>
+                <% @retweetusernames = User.where(id: feed_item.user_id) %>
+                <% @retweetusernames.each do |retweetusername| %>
+                    <ol class="microposts">
+                    <%= render partial: 'microposts/retweet', locals: { micropost: retweet, name: retweetusername } %></ol>
+                <% end %>
+            <% end %>
+         <% else %>
+            <ol class="microposts">
+            <%= render partial: 'microposts/micropost', locals: { micropost: feed_item } %></ol>
+         <% end %>
+     <% end %>
 <% end %>
+
+

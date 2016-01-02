@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get    'signup', to: 'users#new'
   get    'login' , to: 'sessions#new'
   post   'login' , to: 'sessions#create'
+  post   'search', to: 'static_pages#index'
   delete 'logout', to: 'sessions#destroy'
   
   resources :users do
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
     get 'followers', on: :member
   end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :microposts
+  resources :microposts do
+    post 'retweet', on: :member
+  end
   resources :relationships, only: [:create, :destroy]
 end

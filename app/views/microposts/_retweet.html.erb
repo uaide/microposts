@@ -3,6 +3,10 @@
   ">
 
 <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+<span class="name">
+  <%= name.name + "がリツイート" %>
+  </br>
+</span>
 <span class="user">
   <%= link_to micropost.user.name, micropost.user %>
 </span>

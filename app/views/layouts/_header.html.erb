@@ -20,6 +20,10 @@
                             </li>
                         </ul>
                     </li>
+                        <li><%= form_tag search_path do %></li>
+                        <li><%= text_field_tag "search[word]" %></li>
+                        <li><%= submit_tag "検索", :id => "search"%></li>
+                        <li><% end %></li>
                 <% else %>
                     <li><%= link_to "Log in", login_path %></li>
                 <% end %>
